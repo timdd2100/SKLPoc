@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E1AB5D46-8479-424A-95DF-FAF768A5FB8B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SKLPoc</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3FE31486-3332-448B-83B8-3E98BA5C5606</key>
+		<string>http://iptfsvr01.skl.com.tw:8081/MAgent</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Main/trunk/SKLPoc/SKLPoc.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3FE31486-3332-448B-83B8-3E98BA5C5606</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>3FE31486-3332-448B-83B8-3E98BA5C5606</key>
+		<string>http://iptfsvr01.skl.com.tw:8081</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://iptfsvr01.skl.com.tw:8081/MAgent/Main/trunk/SKLPoc/SKLPoc.xcworkspace</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3FE31486-3332-448B-83B8-3E98BA5C5606</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3FE31486-3332-448B-83B8-3E98BA5C5606</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MAgent</string>
+		</dict>
+	</array>
+</dict>
+</plist>
