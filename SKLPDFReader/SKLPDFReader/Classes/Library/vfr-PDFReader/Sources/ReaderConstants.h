@@ -34,4 +34,9 @@
 #define READER_SHOW_SHADOWS TRUE
 #define READER_STANDALONE FALSE
 
+//new mode（預設都是true）
+#define READER_PAINT_MODE TRUE
+#define READER_TEXT_MODE TRUE
+#define READER_CLEAN_MODE TRUE
+
 extern NSString *const kReaderCopyrightNotice;

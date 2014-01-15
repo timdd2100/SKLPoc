@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BABD90A188658EF008F4090 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD904188658EF008F4090 /* delete.png */; };
+		3BABD90B188658EF008F4090 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD905188658EF008F4090 /* delete@2x.png */; };
+		3BABD90C188658EF008F4090 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD906188658EF008F4090 /* pen.png */; };
+		3BABD90D188658EF008F4090 /* pen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD907188658EF008F4090 /* pen@2x.png */; };
+		3BABD90E188658EF008F4090 /* text.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD908188658EF008F4090 /* text.png */; };
+		3BABD90F188658EF008F4090 /* text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD909188658EF008F4090 /* text@2x.png */; };
+		3BABD912188672C6008F4090 /* ReaderSecondToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABD911188672C6008F4090 /* ReaderSecondToolbar.m */; };
 		8C15B097186C16DA001F6B20 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C15B096186C16DA001F6B20 /* UIImage+Crop.m */; };
 		8C15B099186C272E001F6B20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15B098186C272E001F6B20 /* QuartzCore.framework */; };
 		8C5076F1185AE8EE0039C065 /* SKLPDFReaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5076F0185AE8EE0039C065 /* SKLPDFReaderViewController.xib */; };
@@ -118,6 +125,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3BABD904188658EF008F4090 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		3BABD905188658EF008F4090 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		3BABD906188658EF008F4090 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
+		3BABD907188658EF008F4090 /* pen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pen@2x.png"; sourceTree = "<group>"; };
+		3BABD908188658EF008F4090 /* text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text.png; sourceTree = "<group>"; };
+		3BABD909188658EF008F4090 /* text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "text@2x.png"; sourceTree = "<group>"; };
+		3BABD910188672C6008F4090 /* ReaderSecondToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderSecondToolbar.h; sourceTree = "<group>"; };
+		3BABD911188672C6008F4090 /* ReaderSecondToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderSecondToolbar.m; sourceTree = "<group>"; };
 		8C15B095186C16DA001F6B20 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		8C15B096186C16DA001F6B20 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
 		8C15B098186C272E001F6B20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -309,6 +324,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BABD903188658BF008F4090 /* new */ = {
+			isa = PBXGroup;
+			children = (
+				3BABD904188658EF008F4090 /* delete.png */,
+				3BABD905188658EF008F4090 /* delete@2x.png */,
+				3BABD906188658EF008F4090 /* pen.png */,
+				3BABD907188658EF008F4090 /* pen@2x.png */,
+				3BABD908188658EF008F4090 /* text.png */,
+				3BABD909188658EF008F4090 /* text@2x.png */,
+			);
+			name = new;
+			sourceTree = "<group>";
+		};
 		8C15B094186C1682001F6B20 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +498,7 @@
 		8C856A461867E8B90074BD77 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				3BABD903188658BF008F4090 /* new */,
 				8C856A471867E8B90074BD77 /* AppIcon-057.png */,
 				8C856A481867E8B90074BD77 /* AppIcon-072.png */,
 				8C856A491867E8B90074BD77 /* AppIcon-114.png */,
@@ -511,6 +540,8 @@
 				8C856A691867E8B90074BD77 /* ReaderMainPagebar.m */,
 				8C856A6A1867E8B90074BD77 /* ReaderMainToolbar.h */,
 				8C856A6B1867E8B90074BD77 /* ReaderMainToolbar.m */,
+				3BABD910188672C6008F4090 /* ReaderSecondToolbar.h */,
+				3BABD911188672C6008F4090 /* ReaderSecondToolbar.m */,
 				8C856A6C1867E8B90074BD77 /* ReaderThumbCache.h */,
 				8C856A6D1867E8B90074BD77 /* ReaderThumbCache.m */,
 				8C856A6E1867E8B90074BD77 /* ReaderThumbFetch.h */,
@@ -766,27 +797,33 @@
 				8C7036FA185AD82F00F286CC /* InfoPlist.strings in Resources */,
 				8C856A821867E8B90074BD77 /* AppIcon-057.png in Resources */,
 				8C856AAE1867FCAF0074BD77 /* Test-Driven iOS Development.pdf in Resources */,
+				3BABD90A188658EF008F4090 /* delete.png in Resources */,
 				8CB1EA04187A79B5008CCD39 /* ZDBtn3.png in Resources */,
 				8C856A911867E8B90074BD77 /* Reader-Print@2x.png in Resources */,
 				8CB1EA03187A79B5008CCD39 /* ZDBtn2.png in Resources */,
 				8C856A8C1867E8B90074BD77 /* Reader-Mark-N.png in Resources */,
 				8C856A8D1867E8B90074BD77 /* Reader-Mark-N@2x.png in Resources */,
+				3BABD90C188658EF008F4090 /* pen.png in Resources */,
 				8C856A901867E8B90074BD77 /* Reader-Print.png in Resources */,
 				8C856A891867E8B90074BD77 /* Reader-Button-N@2x.png in Resources */,
 				8C856A8E1867E8B90074BD77 /* Reader-Mark-Y.png in Resources */,
+				3BABD90F188658EF008F4090 /* text@2x.png in Resources */,
 				8C856A8B1867E8B90074BD77 /* Reader-Email@2x.png in Resources */,
+				3BABD90E188658EF008F4090 /* text.png in Resources */,
 				8C5076F1185AE8EE0039C065 /* SKLPDFReaderViewController.xib in Resources */,
 				8C856A881867E8B90074BD77 /* Reader-Button-N.png in Resources */,
 				8C856A921867E8B90074BD77 /* Reader-Thumbs.png in Resources */,
 				8C856A931867E8B90074BD77 /* Reader-Thumbs@2x.png in Resources */,
 				8C856A831867E8B90074BD77 /* AppIcon-072.png in Resources */,
 				8C703702185AD82F00F286CC /* Images.xcassets in Resources */,
+				3BABD90D188658EF008F4090 /* pen@2x.png in Resources */,
 				8C856A841867E8B90074BD77 /* AppIcon-114.png in Resources */,
 				8C856A941867E8B90074BD77 /* LICENSE in Resources */,
 				8C856A851867E8B90074BD77 /* AppIcon-144.png in Resources */,
 				8C856A861867E8B90074BD77 /* Reader-Button-H.png in Resources */,
 				8C856A871867E8B90074BD77 /* Reader-Button-H@2x.png in Resources */,
 				8C856A951867E8B90074BD77 /* README in Resources */,
+				3BABD90B188658EF008F4090 /* delete@2x.png in Resources */,
 				8C856A8F1867E8B90074BD77 /* Reader-Mark-Y@2x.png in Resources */,
 				8C856A8A1867E8B90074BD77 /* Reader-Email.png in Resources */,
 			);
@@ -857,6 +894,7 @@
 				8C856AA31867E8B90074BD77 /* ReaderThumbsView.m in Sources */,
 				8CFE60431868080400C7D22C /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				8CFE60461868080400C7D22C /* NSManagedObject+MagicalDataImport.m in Sources */,
+				3BABD912188672C6008F4090 /* ReaderSecondToolbar.m in Sources */,
 				8C703726185ADB7400F286CC /* SKLPDFReaderViewController.m in Sources */,
 				8C703700185AD82F00F286CC /* SKLPDFReaderAppDelegate.m in Sources */,
 				8C856AA71867E8B90074BD77 /* ThumbsViewController.m in Sources */,
