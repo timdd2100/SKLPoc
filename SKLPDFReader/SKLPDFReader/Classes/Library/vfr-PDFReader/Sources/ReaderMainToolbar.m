@@ -215,6 +215,7 @@
 #endif // end of READER_ENABLE_PRINT Option
         
         
+#pragma -mark --新加入button
         /*
          加入button測試 20140115
          */
@@ -443,73 +444,6 @@
 	[delegate tappedInToolbar:self printButton:button];
 }
 
-//20140115 加入
-- (void)textButtonTapped:(UIButton *)button
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-    NSLog(@"text");
-    
-    //隱藏原本的toolbar
-  
-    [UIView animateWithDuration:0.25 delay:0.0
-                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-                     animations:^(void)
-     {
-         self.hidden = YES;
-         self.alpha = 0.0f;
-     }
-                     completion:^(BOOL finished)
-     {
-         //開始顯示第二個
-         
-         ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:toolBarFrame  Product:mProduct]; // At top
-         secondToolbar.delegate = self.delegate;
-         
-         NSLog(@"第二toolbar");
-         [secondToolbar showToolbar];
-//         [UIView animateWithDuration:0.25 delay:0.0
-//                             options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-//                          animations:^(void)
-//          {
-//              secondToolbar.alpha = 1.0f;
-//          }
-//                          completion:^(BOOL finished)
-//          {
-//              ReaderViewController *test = (ReaderViewController *)self.delegate;
-//              [test.view addSubview:secondToolbar];
-//          }
-//          
-//        ];
-         
-     }
-     ];
- 
-	//[delegate tappedInToolbar:self printButton:button];
-}
-
-- (void)paintButtonTapped:(UIButton *)button
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-    NSLog(@"paint");
-	//[delegate tappedInToolbar:self printButton:button];
-}
-//----end
-
-- (void)cleanButtonTapped:(UIButton *)button
-{
-#ifdef DEBUGX
-	NSLog(@"%s", __FUNCTION__);
-#endif
-    NSLog(@"clean");
-	//[delegate tappedInToolbar:self printButton:button];
-}
-
-
-
 - (void)emailButtonTapped:(UIButton *)button
 {
 #ifdef DEBUGX
@@ -527,5 +461,76 @@
     
 	[delegate tappedInToolbar:self markButton:button];
 }
+
+#pragma -mark --新加入button的執行方法
+
+- (void)textButtonTapped:(UIButton *)button
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
+    NSLog(@"text");
+    
+    //隱藏原本的toolbar 顯示第二個toolbar
+    [UIView animateWithDuration:0.3 delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         self.alpha = 1.0f;
+         self.alpha = 0.0f;
+     }
+                     completion:^(BOOL finished)
+     {
+         //開始顯示第二個
+        ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:toolBarFrame  Product:mProduct]; // create toolbar
+         secondToolbar.Mode = 0;//告知是文字方塊模式
+         secondToolbar.firstToolbar = self;
+         secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人
+         [secondToolbar showToolbar];
+     }
+     ];
+    
+	//[delegate tappedInToolbar:self printButton:button];
+}
+
+- (void)paintButtonTapped:(UIButton *)button
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
+    NSLog(@"paint");
+    //隱藏原本的toolbar 顯示第二個toolbar
+    [UIView animateWithDuration:0.3 delay:0.0
+                        options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void)
+     {
+         self.alpha = 1.0f;
+         self.alpha = 0.0f;
+     }
+                     completion:^(BOOL finished)
+     {
+         //開始顯示第二個
+         ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:toolBarFrame  Product:mProduct]; // create toolbar
+         secondToolbar.Mode = 1;//告知是筆繪模式
+         secondToolbar.firstToolbar = self;
+         secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人
+         [secondToolbar showToolbar];
+     }
+     ];
+
+	//[delegate tappedInToolbar:self printButton:button];
+}
+//----end
+
+- (void)cleanButtonTapped:(UIButton *)button
+{
+#ifdef DEBUGX
+	NSLog(@"%s", __FUNCTION__);
+#endif
+    NSLog(@"clean");
+	//[delegate tappedInToolbar:self printButton:button];
+}
+
+
 
 @end

@@ -7,6 +7,8 @@
 //
 #import <UIKit/UIKit.h>
 #import "UIXToolbarView.h"
+
+#import "ReaderMainToolbar.h"
 #import "Product.h"
 
 @class ReaderSecondToolbar;
@@ -24,9 +26,22 @@
 @end
 
 @interface ReaderSecondToolbar : UIXToolbarView
+{
+}
+
+@property (nonatomic, strong)ReaderMainToolbar *firstToolbar;
+
+@property (nonatomic) int Mode;
+
+@property (nonatomic, readonly)BOOL editMode;
+
 @property (nonatomic, unsafe_unretained, readwrite) id delegate;
+
 - (id)initWithFrame:(CGRect)frame Product:(Product*)pro;
+
 - (void)hideToolbar;
 - (void)showToolbar;
+
+-(id)getSecondToolbar;
 
 @end
