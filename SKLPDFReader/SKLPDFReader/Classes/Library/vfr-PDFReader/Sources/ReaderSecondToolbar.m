@@ -23,6 +23,7 @@
 #import "ReaderSecondToolbar.h"
 #import "ReaderViewController.h"
 #import "ColorViewController.h"
+#import "NotifyViewController.h"
 
 @implementation ReaderSecondToolbar
 {
@@ -287,6 +288,10 @@
 {
     //委派給編輯模式的viewcontroller
     [delegate tappedInToolbar:self paintButton:button];
+    
+    NotifyViewController *notifyviewcontroller = [[NotifyViewController alloc]initWithNibName:@"Notify" bundle:Nil];
+    ReaderViewController *rootview = (ReaderViewController *)self.delegate;
+    [rootview.view addSubview: notifyviewcontroller.view];
     NSLog(@"finish");
 }
 
