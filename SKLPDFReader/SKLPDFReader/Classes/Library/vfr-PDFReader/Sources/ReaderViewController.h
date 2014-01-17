@@ -34,6 +34,7 @@
 #import "Product.h"
 #import "AnnotationViewController.h"
 #import "SKLAnnotationDrawView.h"
+#import "ReaderSecondToolbar.h"
 
 @class ReaderViewController;
 @class ReaderMainToolbar;
@@ -48,7 +49,7 @@
 
 @interface ReaderViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, MFMailComposeViewControllerDelegate,
 													ReaderMainToolbarDelegate, ReaderMainPagebarDelegate, ReaderContentViewDelegate,
-													ThumbsViewControllerDelegate, AnnotationViewControllerDelegate, SKLAnnotationViewDelegate>
+													ThumbsViewControllerDelegate, AnnotationViewControllerDelegate, SKLAnnotationViewDelegate,ReaderSecondToolbarDelegate>
 {
 @private // Instance variables
 

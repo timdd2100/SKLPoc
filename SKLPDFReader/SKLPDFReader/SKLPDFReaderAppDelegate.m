@@ -18,11 +18,12 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    
+
     SKLPDFReaderViewController *controller = [[SKLPDFReaderViewController alloc] initWithNibName:@"SKLPDFReaderViewController" bundle:Nil];
     self.window.rootViewController = controller;
     
     [self.window makeKeyAndVisible];
+   
     return YES;
 }
 

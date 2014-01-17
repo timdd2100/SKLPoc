@@ -7,12 +7,15 @@
 //
 
 #import "ColorViewController.h"
+#import "ColorCell.h"
 
 @implementation ColorViewController
 
-- (id)initWithFrame:(CGRect)frame
+-(void) viewDidLoad
 {
-    return self;
+    [super viewDidLoad];
+    
+    [self.collection registerNib:[UINib nibWithNibName:@"ColorCell" bundle:Nil]  forCellWithReuseIdentifier:@"CELL"];
 }
 
 /*
@@ -25,14 +28,10 @@
 */
 #pragma -mark -- CollectionView
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 2;
+    return 30;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -40,16 +39,12 @@
     
     collectionView.scrollEnabled = YES;
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"colorcell" forIndexPath:indexPath];
-    
-  
+    ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
     
     //修改cell上的物件 名字
-    //UILabel *label = (UILabel *) [[cell.contentView subviews] objectAtIndex:1];
+    UILabel *label = (UILabel *) [[cell.contentView subviews] objectAtIndex:0];
     
-    //label.text = [(People *)[data.PeopleDataSource objectAtIndex:indexPath.row] Name];
-    
-    cell.backgroundColor =[UIColor whiteColor];
+    label.text = [NSString stringWithFormat:@"cell %i",indexPath.row];
     return cell;
 }
 

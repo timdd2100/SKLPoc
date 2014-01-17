@@ -46,9 +46,9 @@
 @interface ReaderMainToolbar : UIXToolbarView
 {
 @private // Instance variables
-
+    
 	UIButton *markButton;
-
+    
 	UIImage *markImageN;
 	UIImage *markImageY;
 }

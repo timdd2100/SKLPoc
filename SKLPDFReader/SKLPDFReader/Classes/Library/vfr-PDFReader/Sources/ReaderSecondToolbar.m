@@ -22,22 +22,20 @@
 
 #import "ReaderSecondToolbar.h"
 #import "ReaderViewController.h"
+#import "ColorViewController.h"
 
 @implementation ReaderSecondToolbar
 {
-    Product *mProduct;
     CGFloat rightButtonX;
     CGFloat leftButtonX;
     UIImage *buttonH;
     UIImage *buttonN;
     CGFloat viewWidth;
 }
-@synthesize editMode;
--(id)initWithFrame:(CGRect)frame Product:(Product *)pro
-{
-    mProduct = pro;
-    return [self initWithFrame:frame];
-}
+
+
+
+@synthesize editMode,statusPopover,delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -53,9 +51,9 @@
 		buttonN = [imageN stretchableImageWithLeftCapWidth:5 topCapHeight:0];
         
         viewWidth = self.bounds.size.width;//寬度
-
+        
         leftButtonX = BUTTON_X; // Left button start X position
-       //init -- end
+        //init -- end
         
         
         /*
@@ -64,7 +62,7 @@
         
         //取消button
         UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-
+        
 		cancelButton.frame = CGRectMake(leftButtonX, BUTTON_Y, CANCEL_BUTTON_WIDTH, BUTTON_HEIGHT);
 		[cancelButton setTitle:NSLocalizedString(@"取消", @"button") forState:UIControlStateNormal];
 		[cancelButton setTitleColor:[UIColor colorWithWhite:0.0f alpha:1.0f] forState:UIControlStateNormal];
@@ -103,16 +101,16 @@
     [UIView animateWithDuration:0.25 delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void)
-                    {
-                        self.alpha = 0.0f;
-                        [self removeFromSuperview];
-                    }
+     {
+         self.alpha = 0.0f;
+         [self removeFromSuperview];
+     }
                      completion:^(BOOL finished)
-                    {
-                        self.hidden = YES;
-                    }
+     {
+         self.hidden = YES;
+     }
      ];
-
+    
 }
 
 #pragma -mark 各種模式UI生成
@@ -127,7 +125,7 @@
     
     colorButton.frame = CGRectMake(rightButtonX, BUTTON_Y, COLOR_BUTTON_WIDTH, BUTTON_HEIGHT);
     [colorButton setImage:[UIImage imageNamed:@"COLOR.png"] forState:UIControlStateNormal];
-    [colorButton addTarget:self action:@selector(colorButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [colorButton addTarget:self action: @selector(colorButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [colorButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [colorButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     colorButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -146,7 +144,7 @@
     
     colorButton.frame = CGRectMake(rightButtonX, BUTTON_Y, COLOR_BUTTON_WIDTH, BUTTON_HEIGHT);
     [colorButton setImage:[UIImage imageNamed:@"COLOR.png"] forState:UIControlStateNormal];
-    [colorButton addTarget:self action:@selector(colorButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [colorButton addTarget:self action:@selector(colorButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [colorButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [colorButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     colorButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -159,7 +157,7 @@
     
     paintButton.frame = CGRectMake(rightButtonX, BUTTON_Y, PAINT_BUTTON_WIDTH, BUTTON_HEIGHT);
     [paintButton setImage:[UIImage imageNamed:@"pen.png"] forState:UIControlStateNormal];
-    [paintButton addTarget:self action:@selector(paintButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [paintButton addTarget:self action:@selector(paintButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [paintButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [paintButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     paintButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -173,12 +171,12 @@
     
     undoButton.frame = CGRectMake(rightButtonX, BUTTON_Y, UNDO_BUTTON_WIDTH, BUTTON_HEIGHT);
     [undoButton setImage:[UIImage imageNamed:@"undo.png"] forState:UIControlStateNormal];
-    [undoButton addTarget:self action:@selector(undoButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [undoButton addTarget:self action:@selector(undoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [undoButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [undoButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     undoButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self addSubview:undoButton];
-
+    
     //redo
     rightButtonX -= (PAINT_BUTTON_WIDTH + BUTTON_SPACE);
     
@@ -186,12 +184,12 @@
     
     redoButton.frame = CGRectMake(rightButtonX, BUTTON_Y, REDO_BUTTON_WIDTH, BUTTON_HEIGHT);
     [redoButton setImage:[UIImage imageNamed:@"redo.png"] forState:UIControlStateNormal];
-    [redoButton addTarget:self action:@selector(paintButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [redoButton addTarget:self action:@selector(paintButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [redoButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [redoButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     redoButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [self addSubview:redoButton];
-
+    
 }
 
 
@@ -202,7 +200,7 @@
 {
     if(self)
     {
-         return self;
+        return self;
     }
     else
     {
@@ -222,78 +220,89 @@
         //筆繪模式
         [self paintMode];
     }
-
+    
     //加入動畫
     [UIView animateWithDuration:0.3 delay:0.0
                         options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-        animations:^(void){
-                self.alpha = 0.0f;
-                self.alpha = 1.0f;
+                     animations:^(void){
+                         self.alpha = 0.0f;
+                         self.alpha = 1.0f;
                          
-                ReaderViewController *test = (ReaderViewController *)self.delegate;
-                [test.view addSubview:self];
-     }
-        completion:NULL
+                         //要修正
+                         ReaderViewController *test = (ReaderViewController *)self.delegate;
+                         [test.view addSubview:self];
+                     }
+                     completion:NULL
      ];
-
+    
 }
 
 -(void)cancelButtonTapped
 {
     //加入動畫
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction
-             animations:^{
-                 self.alpha = 1.0f;
-                 self.alpha = 0.0f;
-            } completion:^(BOOL finished) {
-                
-                //消失後要讓上一個toolbar顯示回來
-                [UIView animateWithDuration:0.3 delay:0.0
-                                    options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
-                                 animations:^(void){
-                                     self.firstToolbar.alpha = 0.0f;
-                                     self.firstToolbar.alpha = 1.0f;
-                                 }
-                                 completion:^(BOOL finished)
-                                {
-                                    [self removeFromSuperview];//動畫完成後移除secondtoolbar
-                                }
-                 ];
-        }];
-  }
+                     animations:^{
+                         self.alpha = 1.0f;
+                         self.alpha = 0.0f;
+                     } completion:^(BOOL finished) {
+                         
+                         //消失後要讓上一個toolbar顯示回來
+                         [UIView animateWithDuration:0.3 delay:0.0
+                                             options:UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAllowUserInteraction
+                                          animations:^(void){
+                                              self.firstToolbar.alpha = 0.0f;
+                                              self.firstToolbar.alpha = 1.0f;
+                                          }
+                                          completion:^(BOOL finished)
+                          {
+                              [self removeFromSuperview];//動畫完成後移除secondtoolbar
+                          }
+                          ];
+                     }];
+}
 
--(void)saveButtonTapped
+#pragma -mark 新增 委派按鈕事件
+
+-(void)saveButtonTapped:(UIButton *)button
 {
+    //委派給編輯模式的viewcontroller處理
+    [delegate tappedInToolbar:self saveButton:button];
+    NSLog(@"finish");
+}
+
+-(void)colorButtonTapped:(UIButton *)button
+{
+    ColorViewController *colorPop = [[ColorViewController alloc]initWithNibName:@"ColorView" bundle:Nil];
     
-}
-
--(void)colorButtonTapped
-{
+    statusPopover =   [[UIPopoverController alloc]initWithContentViewController:colorPop];
+    statusPopover.popoverContentSize = CGSizeMake(200.0f, 200.0f);
+    [statusPopover presentPopoverFromRect:button.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
+    //委派給編輯模式的viewcontroller
+    //[delegate tappedInToolbar:self colorButton:button];
+    NSLog(@"finish");
 }
 
--(void)paintButtonTapped
+-(void)paintButtonTapped:(UIButton *)button
 {
-    
+    //委派給編輯模式的viewcontroller
+    [delegate tappedInToolbar:self paintButton:button];
+    NSLog(@"finish");
 }
 
--(void)redoButtonTapped
+-(void)redoButtonTapped:(UIButton *)button
 {
-    
+    //委派給編輯模式的viewcontroller
+    [delegate tappedInToolbar:self redoButton:button];
+    NSLog(@"finish");
 }
 
--(void)undoButtonTapped
+-(void)undoButtonTapped:(UIButton *)button
 {
-    
+    //委派給編輯模式的viewcontroller
+    [delegate tappedInToolbar:self undoButton:button];
+    NSLog(@"finish");
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

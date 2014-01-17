@@ -21,6 +21,8 @@
 		3BABD91E1887BD84008F4090 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD9181887BD84008F4090 /* undo.png */; };
 		3BABD9231887DA12008F4090 /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABD9221887DA12008F4090 /* ColorViewController.m */; };
 		3BABD9261887DB95008F4090 /* ColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD9251887DB95008F4090 /* ColorView.xib */; };
+		3BABD94D1888E247008F4090 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABD94C1888E247008F4090 /* ColorCell.m */; };
+		3BABD94F1888F191008F4090 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD94E1888F191008F4090 /* ColorCell.xib */; };
 		8C15B097186C16DA001F6B20 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C15B096186C16DA001F6B20 /* UIImage+Crop.m */; };
 		8C15B099186C272E001F6B20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15B098186C272E001F6B20 /* QuartzCore.framework */; };
 		8C5076F1185AE8EE0039C065 /* SKLPDFReaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5076F0185AE8EE0039C065 /* SKLPDFReaderViewController.xib */; };
@@ -148,6 +150,9 @@
 		3BABD9211887DA12008F4090 /* ColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorViewController.h; sourceTree = "<group>"; };
 		3BABD9221887DA12008F4090 /* ColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorViewController.m; sourceTree = "<group>"; };
 		3BABD9251887DB95008F4090 /* ColorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorView.xib; sourceTree = "<group>"; };
+		3BABD94B1888E247008F4090 /* ColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
+		3BABD94C1888E247008F4090 /* ColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
+		3BABD94E1888F191008F4090 /* ColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		8C15B095186C16DA001F6B20 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		8C15B096186C16DA001F6B20 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
 		8C15B098186C272E001F6B20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -361,6 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				3BABD9251887DB95008F4090 /* ColorView.xib */,
+				3BABD94E1888F191008F4090 /* ColorCell.xib */,
+				3BABD94B1888E247008F4090 /* ColorCell.h */,
+				3BABD94C1888E247008F4090 /* ColorCell.m */,
 			);
 			name = Color;
 			sourceTree = "<group>";
@@ -563,10 +571,10 @@
 				8C856A611867E8B90074BD77 /* ReaderContentPage.m */,
 				8C856A621867E8B90074BD77 /* ReaderContentTile.h */,
 				8C856A631867E8B90074BD77 /* ReaderContentTile.m */,
-				8C856A641867E8B90074BD77 /* ReaderContentView.h */,
 				8C856A651867E8B90074BD77 /* ReaderContentView.m */,
 				8C856A661867E8B90074BD77 /* ReaderDocument.h */,
 				8C856A671867E8B90074BD77 /* ReaderDocument.m */,
+				8C856A641867E8B90074BD77 /* ReaderContentView.h */,
 				8C856A681867E8B90074BD77 /* ReaderMainPagebar.h */,
 				8C856A691867E8B90074BD77 /* ReaderMainPagebar.m */,
 				8C856A6A1867E8B90074BD77 /* ReaderMainToolbar.h */,
@@ -838,6 +846,7 @@
 				8C856A8D1867E8B90074BD77 /* Reader-Mark-N@2x.png in Resources */,
 				3BABD90C188658EF008F4090 /* pen.png in Resources */,
 				8C856A901867E8B90074BD77 /* Reader-Print.png in Resources */,
+				3BABD94F1888F191008F4090 /* ColorCell.xib in Resources */,
 				8C856A891867E8B90074BD77 /* Reader-Button-N@2x.png in Resources */,
 				8C856A8E1867E8B90074BD77 /* Reader-Mark-Y.png in Resources */,
 				3BABD90F188658EF008F4090 /* text@2x.png in Resources */,
@@ -898,6 +907,7 @@
 				8C856A9D1867E8B90074BD77 /* ReaderMainToolbar.m in Sources */,
 				8CFE60531868080400C7D22C /* MagicalRecord+iCloud.m in Sources */,
 				8CFE60481868080400C7D22C /* NSManagedObject+MagicalRecord.m in Sources */,
+				3BABD94D1888E247008F4090 /* ColorCell.m in Sources */,
 				8CFE60551868080400C7D22C /* MagicalRecord+Setup.m in Sources */,
 				8C856A971867E8B90074BD77 /* ReaderConstants.m in Sources */,
 				8CFE60571868080400C7D22C /* MagicalRecord.m in Sources */,

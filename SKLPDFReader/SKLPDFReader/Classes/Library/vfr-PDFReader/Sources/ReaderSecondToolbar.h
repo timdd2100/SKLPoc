@@ -14,20 +14,23 @@
 @class ReaderSecondToolbar;
 
 @protocol ReaderSecondToolbarDelegate <NSObject>
+// Delegate protocols
 
-@required // Delegate protocols
-
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar doneButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar thumbsButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar printButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar emailButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar markButton:(UIButton *)button;
+@optional
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar saveButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar cancelButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar paintButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar textButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar colorButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar undoButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar redoButton:(UIButton *)button;
 
 @end
 
+@protocol ReaderSecondToolbarDelegate;
+
 @interface ReaderSecondToolbar : UIXToolbarView
-{
-}
 
 @property (nonatomic, strong)ReaderMainToolbar *firstToolbar;
 
@@ -37,7 +40,7 @@
 
 @property (nonatomic, unsafe_unretained, readwrite) id delegate;
 
-- (id)initWithFrame:(CGRect)frame Product:(Product*)pro;
+@property (nonatomic ,strong) UIPopoverController *statusPopover;
 
 - (void)hideToolbar;
 - (void)showToolbar;

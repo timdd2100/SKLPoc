@@ -33,7 +33,6 @@
 
 @implementation ReaderMainToolbar{
     Product *mProduct;
-    CGRect toolBarFrame;
 }
 
 #pragma mark Constants
@@ -74,10 +73,6 @@
 - (id)initWithFrame:(CGRect)frame document:(ReaderDocument *)object Product:(Product*)pro
 {
     mProduct = pro;
-    
-    //將toolbar的版型記錄下來
-    toolBarFrame = CGRectStandardize(frame);
-    
     return [self initWithFrame:frame document:object];
 }
 
@@ -482,7 +477,7 @@
                      completion:^(BOOL finished)
      {
          //開始顯示第二個
-        ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:toolBarFrame  Product:mProduct]; // create toolbar
+        ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:self.frame]; // create toolbar
          secondToolbar.Mode = 0;//告知是文字方塊模式
          secondToolbar.firstToolbar = self;
          secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人
@@ -510,7 +505,7 @@
                      completion:^(BOOL finished)
      {
          //開始顯示第二個
-         ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:toolBarFrame  Product:mProduct]; // create toolbar
+         ReaderSecondToolbar  *secondToolbar = [[ReaderSecondToolbar alloc] initWithFrame:self.frame]; // create toolbar
          secondToolbar.Mode = 1;//告知是筆繪模式
          secondToolbar.firstToolbar = self;
          secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人

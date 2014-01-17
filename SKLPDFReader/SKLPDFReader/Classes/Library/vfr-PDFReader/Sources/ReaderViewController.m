@@ -342,7 +342,6 @@
 	toolbarRect.size.height = TOOLBAR_HEIGHT;
 
 	mainToolbar = [[ReaderMainToolbar alloc] initWithFrame:toolbarRect document:document Product:mproduct]; // At top
-
 	mainToolbar.delegate = self;
 
 	[self.view addSubview:mainToolbar];
@@ -1116,5 +1115,20 @@
 - (void) annotationViewDidCustomButtonTap:(SKLAnnotationView *)sticker {
     
 }
+
+
+-(void)tappedInToolbar:(ReaderSecondToolbar *)toolbar paintButton:(UIButton *)button
+{
+    if (toolbar.editMode) {
+          NSLog(@"IN EDIT MODE");
+    }
+    else
+    {
+         NSLog(@"Not IN EDIT MODE");
+    }
+   
+    
+}
+
 
 @end
