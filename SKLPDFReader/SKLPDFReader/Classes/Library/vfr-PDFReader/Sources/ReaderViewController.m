@@ -1116,7 +1116,7 @@
     
 }
 
-
+#pragma -mark - fot test delegate
 -(void)tappedInToolbar:(ReaderSecondToolbar *)toolbar paintButton:(UIButton *)button
 {
     if (toolbar.editMode) {

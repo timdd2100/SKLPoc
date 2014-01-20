@@ -80,4 +80,5 @@
 
 - (id)initWithReaderDocument:(ReaderDocument *)object Product:(Product*)pro;
 
+
 @end

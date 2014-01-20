@@ -286,12 +286,17 @@
 
 -(void)paintButtonTapped:(UIButton *)button
 {
-    //委派給編輯模式的viewcontroller
-    [delegate tappedInToolbar:self paintButton:button];
     
-    NotifyViewController *notifyviewcontroller = [[NotifyViewController alloc]initWithNibName:@"Notify" bundle:Nil];
-    ReaderViewController *rootview = (ReaderViewController *)self.delegate;
-    [rootview.view addSubview: notifyviewcontroller.view];
+    ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+    
+    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"test OOXXAABBCCDD" WithView:rootView.view];
+    
+    
+    //委派給編輯模式的viewcontroller
+    if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:paintButton:)]) {
+        [delegate tappedInToolbar:self paintButton:button];
+    }
+    
     NSLog(@"finish");
 }
 
