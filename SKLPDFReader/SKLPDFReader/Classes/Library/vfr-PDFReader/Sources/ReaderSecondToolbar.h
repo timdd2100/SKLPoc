@@ -17,11 +17,8 @@
 // Delegate protocols
 
 @optional
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar;
 - (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar saveButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar cancelButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar paintButton:(UIButton *)button;
-- (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar textButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar colorButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar undoButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderSecondToolbar *)toolbar redoButton:(UIButton *)button;
@@ -40,7 +37,7 @@
 
 @property (nonatomic, unsafe_unretained, readwrite) id delegate;
 
-@property (nonatomic ,strong) UIPopoverController *statusPopover;
+@property (nonatomic ,strong) UIPopoverController *paintPopover;
 
 - (void)hideToolbar;
 - (void)showToolbar;

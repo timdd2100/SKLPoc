@@ -19,13 +19,8 @@
 
 -(id)initWithNotifyContent:(NSString *)Content WithView:(UIView *)View
 {
-//    UIView *topview = [[UIApplication sharedApplication].keyWindow.subviews objectAtIndex:0];
-    
-    
-    
     self = [super initWithNibName:@"Notify" bundle:Nil];
     if (self) {
-        // Custom initialization
         
         content = Content;
         // 設定frame的大小（橫/豎 時畫面大小不同)
@@ -47,7 +42,16 @@
     //[super viewDidLoad];
     notifyLabel.text = content;
     self.view.backgroundColor = [UIColor clearColor];//將背景設定成空白
-   
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)start
+{
     //加入動畫
     [UIView animateWithDuration:3.0 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
@@ -57,13 +61,7 @@
                          //完成後的設定
                          [self.view removeFromSuperview];
                      }
-    ];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+     ];
 }
 
 @end

@@ -25,6 +25,10 @@
 		3BABD94F1888F191008F4090 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD94E1888F191008F4090 /* ColorCell.xib */; };
 		3BABD95218892807008F4090 /* Notify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BABD95118892807008F4090 /* Notify.xib */; };
 		3BABD95718892851008F4090 /* NotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABD95618892851008F4090 /* NotifyViewController.m */; };
+		3BEE4D86188E1FF700D008ED /* CleanView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE4D85188E1FF700D008ED /* CleanView.xib */; };
+		3BEE4D89188E20E100D008ED /* CleanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE4D88188E20E100D008ED /* CleanViewController.m */; };
+		3BEE4D8D188E43CB00D008ED /* PaintPen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE4D8C188E43CB00D008ED /* PaintPen.xib */; };
+		3BEE4D91188E443400D008ED /* PaintPenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE4D90188E443400D008ED /* PaintPenViewController.m */; };
 		8C15B097186C16DA001F6B20 /* UIImage+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C15B096186C16DA001F6B20 /* UIImage+Crop.m */; };
 		8C15B099186C272E001F6B20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C15B098186C272E001F6B20 /* QuartzCore.framework */; };
 		8C5076F1185AE8EE0039C065 /* SKLPDFReaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5076F0185AE8EE0039C065 /* SKLPDFReaderViewController.xib */; };
@@ -158,6 +162,12 @@
 		3BABD95118892807008F4090 /* Notify.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Notify.xib; sourceTree = "<group>"; };
 		3BABD95518892851008F4090 /* NotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyViewController.h; sourceTree = "<group>"; };
 		3BABD95618892851008F4090 /* NotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyViewController.m; sourceTree = "<group>"; };
+		3BEE4D85188E1FF700D008ED /* CleanView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CleanView.xib; sourceTree = "<group>"; };
+		3BEE4D87188E20E100D008ED /* CleanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CleanViewController.h; path = ../View/CleanViewController.h; sourceTree = "<group>"; };
+		3BEE4D88188E20E100D008ED /* CleanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CleanViewController.m; path = ../View/CleanViewController.m; sourceTree = "<group>"; };
+		3BEE4D8C188E43CB00D008ED /* PaintPen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaintPen.xib; sourceTree = "<group>"; };
+		3BEE4D8F188E443400D008ED /* PaintPenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintPenViewController.h; sourceTree = "<group>"; };
+		3BEE4D90188E443400D008ED /* PaintPenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintPenViewController.m; sourceTree = "<group>"; };
 		8C15B095186C16DA001F6B20 /* UIImage+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Crop.h"; sourceTree = "<group>"; };
 		8C15B096186C16DA001F6B20 /* UIImage+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Crop.m"; sourceTree = "<group>"; };
 		8C15B098186C272E001F6B20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -386,6 +396,37 @@
 			name = Notify;
 			sourceTree = "<group>";
 		};
+		3BEE4D82188E1F9900D008ED /* Clean */ = {
+			isa = PBXGroup;
+			children = (
+				3BEE4D85188E1FF700D008ED /* CleanView.xib */,
+			);
+			name = Clean;
+			sourceTree = "<group>";
+		};
+		3BEE4D8B188E436900D008ED /* PaintPen */ = {
+			isa = PBXGroup;
+			children = (
+				3BEE4D8C188E43CB00D008ED /* PaintPen.xib */,
+			);
+			name = PaintPen;
+			sourceTree = "<group>";
+		};
+		3BEE4D8E188E43DE00D008ED /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				3BABD9211887DA12008F4090 /* ColorViewController.h */,
+				3BABD9221887DA12008F4090 /* ColorViewController.m */,
+				3BABD95518892851008F4090 /* NotifyViewController.h */,
+				3BABD95618892851008F4090 /* NotifyViewController.m */,
+				3BEE4D87188E20E100D008ED /* CleanViewController.h */,
+				3BEE4D88188E20E100D008ED /* CleanViewController.m */,
+				3BEE4D8F188E443400D008ED /* PaintPenViewController.h */,
+				3BEE4D90188E443400D008ED /* PaintPenViewController.m */,
+			);
+			name = ToolBar;
+			sourceTree = "<group>";
+		};
 		8C15B094186C1682001F6B20 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +545,8 @@
 		8C703721185AD95200F286CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3BEE4D8B188E436900D008ED /* PaintPen */,
+				3BEE4D82188E1F9900D008ED /* Clean */,
 				3BABD95018892774008F4090 /* Notify */,
 				3BABD9241887DA27008F4090 /* Color */,
 				8CD4B7801884C25300934C29 /* Annotation */,
@@ -514,6 +557,7 @@
 		8C703722185AD95200F286CC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3BEE4D8E188E43DE00D008ED /* ToolBar */,
 				8C703727185ADB9E00F286CC /* SKLMainViewController.h */,
 				8C703728185ADB9E00F286CC /* SKLMainViewController.m */,
 				8C703724185ADB7400F286CC /* SKLPDFReaderViewController.h */,
@@ -523,10 +567,6 @@
 				8CC7B25B186AC4290096A1A1 /* AnnotationViewController.m */,
 				8C76D3EE186D6D6A00C57C30 /* AnnotationTextViewController.h */,
 				8C76D3EF186D6D6A00C57C30 /* AnnotationTextViewController.m */,
-				3BABD9211887DA12008F4090 /* ColorViewController.h */,
-				3BABD9221887DA12008F4090 /* ColorViewController.m */,
-				3BABD95518892851008F4090 /* NotifyViewController.h */,
-				3BABD95618892851008F4090 /* NotifyViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -849,6 +889,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BEE4D8D188E43CB00D008ED /* PaintPen.xib in Resources */,
 				8C7036FA185AD82F00F286CC /* InfoPlist.strings in Resources */,
 				8C856A821867E8B90074BD77 /* AppIcon-057.png in Resources */,
 				3BABD91C1887BD84008F4090 /* redo@2x.png in Resources */,
@@ -872,6 +913,7 @@
 				3BABD95218892807008F4090 /* Notify.xib in Resources */,
 				8C856A881867E8B90074BD77 /* Reader-Button-N.png in Resources */,
 				3BABD91E1887BD84008F4090 /* undo.png in Resources */,
+				3BEE4D86188E1FF700D008ED /* CleanView.xib in Resources */,
 				8C856A921867E8B90074BD77 /* Reader-Thumbs.png in Resources */,
 				8C856A931867E8B90074BD77 /* Reader-Thumbs@2x.png in Resources */,
 				8C856A831867E8B90074BD77 /* AppIcon-072.png in Resources */,
@@ -933,6 +975,7 @@
 				8C703729185ADB9E00F286CC /* SKLMainViewController.m in Sources */,
 				8C856A991867E8B90074BD77 /* ReaderContentTile.m in Sources */,
 				8CFE604F1868080400C7D22C /* NSPersistentStore+MagicalRecord.m in Sources */,
+				3BEE4D89188E20E100D008ED /* CleanViewController.m in Sources */,
 				8CFE606218680C8200C7D22C /* LogRecordModel.xcdatamodeld in Sources */,
 				8C856A961867E8B90074BD77 /* CGPDFDocument.m in Sources */,
 				8CFE603F1868080400C7D22C /* NSAttributeDescription+MagicalDataImport.m in Sources */,
@@ -958,6 +1001,7 @@
 				8CFE60411868080400C7D22C /* NSNumber+MagicalDataImport.m in Sources */,
 				8CFE60451868080400C7D22C /* NSManagedObject+MagicalAggregation.m in Sources */,
 				8C856AA31867E8B90074BD77 /* ReaderThumbsView.m in Sources */,
+				3BEE4D91188E443400D008ED /* PaintPenViewController.m in Sources */,
 				8CFE60431868080400C7D22C /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				8CFE60461868080400C7D22C /* NSManagedObject+MagicalDataImport.m in Sources */,
 				3BABD912188672C6008F4090 /* ReaderSecondToolbar.m in Sources */,

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ColorViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
-@property (weak, nonatomic) IBOutlet UICollectionView *collection;
+@property (strong, nonatomic) IBOutlet UICollectionView *collection;
 
 @end

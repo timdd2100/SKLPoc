@@ -26,13 +26,17 @@
 #import "ReaderConstants.h"
 #import "ReaderMainToolbar.h"
 #import "ReaderDocument.h"
-#import "ReaderSecondToolbar.h"
 #import "ReaderViewController.h"
-
 #import <MessageUI/MessageUI.h>
+
+//new add
+#import "ReaderSecondToolbar.h"
+#import "NotifyViewController.h"
+#import "CleanViewController.h"
 
 @implementation ReaderMainToolbar{
     Product *mProduct;
+    NotifyViewController *notifytext;
 }
 
 #pragma mark Constants
@@ -482,6 +486,16 @@
          secondToolbar.firstToolbar = self;
          secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人
          [secondToolbar showToolbar];
+         
+         //提醒動畫
+         ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+         NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"文字方塊" WithView:rootView.view];
+         [notify start];
+         
+         //委派給編輯模式的viewcontroller
+         if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:textButton:)]) {
+             [delegate tappedInToolbar:self textButton:button];
+         }
      }
      ];
     
@@ -510,10 +524,18 @@
          secondToolbar.firstToolbar = self;
          secondToolbar.delegate = self.delegate;//讓兩個toolbar都委派給同一人
          [secondToolbar showToolbar];
+         
+         //提醒動畫
+         ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+         NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"筆繪模式" WithView:rootView.view];
+         [notify start];
+         
+         //委派給編輯模式的viewcontroller
+         if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:paintButton:)]) {
+             [delegate tappedInToolbar:self paintButton:button];
+         }
      }
      ];
-
-	//[delegate tappedInToolbar:self printButton:button];
 }
 //----end
 
@@ -523,7 +545,18 @@
 	NSLog(@"%s", __FUNCTION__);
 #endif
     NSLog(@"clean");
-	//[delegate tappedInToolbar:self printButton:button];
+    
+    //加入清除的Popover
+    CleanViewController *cleanView = [[CleanViewController alloc]init];
+    
+    self.cleanPopover = [[UIPopoverController alloc]initWithContentViewController:cleanView];
+    self.cleanPopover.popoverContentSize = CGSizeMake(cleanView.view.frame.size.width, cleanView.view.frame.size.height);
+    self.cleanPopover.backgroundColor = self.cleanPopover.contentViewController.view.backgroundColor;
+    
+    cleanView.delegate = self.delegate;
+    cleanView.popover = self.cleanPopover;
+    
+    [self.cleanPopover presentPopoverFromRect:button.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 

@@ -15,7 +15,7 @@
 {
     [super viewDidLoad];
     
-    [self.collection registerNib:[UINib nibWithNibName:@"ColorCell" bundle:Nil]  forCellWithReuseIdentifier:@"CELL"];
+    [self.collection registerNib:[UINib nibWithNibName:@"ColorCell" bundle:Nil]  forCellWithReuseIdentifier:@"CELL1"];
 }
 
 /*
@@ -39,13 +39,22 @@
     
     collectionView.scrollEnabled = YES;
     
-    ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL" forIndexPath:indexPath];
+    ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CELL1" forIndexPath:indexPath];
     
     //修改cell上的物件 名字
     UILabel *label = (UILabel *) [[cell.contentView subviews] objectAtIndex:0];
-    
-    label.text = [NSString stringWithFormat:@"cell %i",indexPath.row];
+    cell.tag = indexPath.row;
+    label.tag = indexPath.row;
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ColorCell *cell = (ColorCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.highlighted = YES;
+    
+    UILabel *label = (UILabel *) [[cell.contentView subviews] objectAtIndex:0];
+    NSLog(@"%ld",(long)cell.tag);
 }
 
 

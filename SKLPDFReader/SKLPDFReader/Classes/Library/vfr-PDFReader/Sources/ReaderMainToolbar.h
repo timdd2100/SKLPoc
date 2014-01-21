@@ -40,6 +40,11 @@
 - (void)tappedInToolbar:(ReaderMainToolbar *)toolbar printButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderMainToolbar *)toolbar emailButton:(UIButton *)button;
 - (void)tappedInToolbar:(ReaderMainToolbar *)toolbar markButton:(UIButton *)button;
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar textButton:(UIButton *)button;
+
+//新加入筆繪委派
+- (void)tappedInToolbar:(ReaderMainToolbar *)toolbar paintButton:(UIButton *)button;
+
 
 @end
 
@@ -54,6 +59,9 @@
 }
 
 @property (nonatomic, unsafe_unretained, readwrite) id <ReaderMainToolbarDelegate> delegate;
+
+@property (nonatomic ,strong) UIPopoverController *cleanPopover;
+
 
 - (id)initWithFrame:(CGRect)frame document:(ReaderDocument *)object;
 

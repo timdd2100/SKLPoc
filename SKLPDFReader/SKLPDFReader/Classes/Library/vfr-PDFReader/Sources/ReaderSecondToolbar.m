@@ -24,6 +24,7 @@
 #import "ReaderViewController.h"
 #import "ColorViewController.h"
 #import "NotifyViewController.h"
+#import "PaintPenViewController.h"
 
 @implementation ReaderSecondToolbar
 {
@@ -36,7 +37,7 @@
 
 
 
-@synthesize editMode,statusPopover,delegate;
+@synthesize editMode,paintPopover,delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -44,7 +45,7 @@
     if (self) {
         // Initialization code
         editMode = YES;//設定編輯模式
-        
+       
         //定義按鈕的框框
         UIImage *imageH = [UIImage imageNamed:@"Reader-Button-H.png"];
 		UIImage *imageN = [UIImage imageNamed:@"Reader-Button-N.png"];
@@ -84,7 +85,7 @@
 		saveButton.frame = CGRectMake(rightButtonX, BUTTON_Y, SAVE_BUTTON_WIDTH, BUTTON_HEIGHT);
         [saveButton setTitle:@"儲存" forState:UIControlStateNormal];
 		//[flagButton setImage:[UIImage imageNamed:@"Reader-Mark-N.png"] forState:UIControlStateNormal];
-		[saveButton addTarget:self action:@selector(saveButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+		[saveButton addTarget:self action:@selector(saveButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 		[saveButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
 		[saveButton setBackgroundImage:buttonN forState:UIControlStateNormal];
 		saveButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -93,6 +94,8 @@
     }
     return self;
 }
+
+
 
 
 #pragma -mark functions
@@ -185,7 +188,7 @@
     
     redoButton.frame = CGRectMake(rightButtonX, BUTTON_Y, REDO_BUTTON_WIDTH, BUTTON_HEIGHT);
     [redoButton setImage:[UIImage imageNamed:@"redo.png"] forState:UIControlStateNormal];
-    [redoButton addTarget:self action:@selector(paintButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [redoButton addTarget:self action:@selector(redoButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [redoButton setBackgroundImage:buttonH forState:UIControlStateHighlighted];
     [redoButton setBackgroundImage:buttonN forState:UIControlStateNormal];
     redoButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -266,51 +269,87 @@
 
 -(void)saveButtonTapped:(UIButton *)button
 {
+
+    //提醒動畫
+    ReaderViewController * rootView = (ReaderViewController *)self.delegate;
+    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"存檔模式" WithView:rootView.view];
+    [notify start];
+
+    
     //委派給編輯模式的viewcontroller處理
-    [delegate tappedInToolbar:self saveButton:button];
-    NSLog(@"finish");
+    if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:saveButton:)])
+    {
+        [delegate tappedInToolbar: self saveButton:button];
+    }
 }
 
 -(void)colorButtonTapped:(UIButton *)button
 {
+    //for test
     ColorViewController *colorPop = [[ColorViewController alloc]initWithNibName:@"ColorView" bundle:Nil];
     
-    statusPopover =   [[UIPopoverController alloc]initWithContentViewController:colorPop];
-    statusPopover.popoverContentSize = CGSizeMake(200.0f, 200.0f);
-    [statusPopover presentPopoverFromRect:button.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    paintPopover =   [[UIPopoverController alloc]initWithContentViewController:colorPop];
+    paintPopover.popoverContentSize = CGSizeMake(200.0f, 200.0f);
+    [paintPopover presentPopoverFromRect:button.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+   
+    //提醒動畫
+    ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"調色盤模式" WithView: rootView.view];
+    [notify start];
+
     
     //委派給編輯模式的viewcontroller
-    //[delegate tappedInToolbar:self colorButton:button];
+    if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:colorButton:)])
+    {
+        //[delegate tappedInToolbar:self colorButton:button];
+    }
+
     NSLog(@"finish");
 }
 
 -(void)paintButtonTapped:(UIButton *)button
 {
+    //加入paint pen 的popover
+    PaintPenViewController *PaintPenView = [[PaintPenViewController alloc]init];
     
-    ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+    paintPopover = [[UIPopoverController alloc]initWithContentViewController:PaintPenView];
+    paintPopover.popoverContentSize = CGSizeMake(PaintPenView.view.frame.size.width, PaintPenView.view.frame.size.height);
+    paintPopover.backgroundColor = paintPopover.contentViewController.view.backgroundColor;
     
-    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"test OOXXAABBCCDD" WithView:rootView.view];
+    PaintPenView.delegate = self.delegate;
+    PaintPenView.popover = paintPopover;
     
-    
-    //委派給編輯模式的viewcontroller
-    if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:paintButton:)]) {
-        [delegate tappedInToolbar:self paintButton:button];
-    }
-    
-    NSLog(@"finish");
-}
+    [paintPopover presentPopoverFromRect:button.frame inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+ }
 
 -(void)redoButtonTapped:(UIButton *)button
 {
+    ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+    //提醒動畫
+    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"回復模式" WithView:rootView.view];
+    [notify start];
+    
+    
     //委派給編輯模式的viewcontroller
-    [delegate tappedInToolbar:self redoButton:button];
+    if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:redoButton:)]) {
+        [delegate tappedInToolbar:self redoButton:button];
+    }
     NSLog(@"finish");
 }
 
 -(void)undoButtonTapped:(UIButton *)button
 {
+    //提醒動畫
+    ReaderViewController *rootView = (ReaderViewController *)self.delegate;
+    NotifyViewController *notify = [[NotifyViewController alloc]initWithNotifyContent:@"回復模式" WithView:rootView.view];
+    [notify start];
+    
     //委派給編輯模式的viewcontroller
-    [delegate tappedInToolbar:self undoButton:button];
+     if (delegate && [delegate respondsToSelector:@selector(tappedInToolbar:undoButton:)])
+     {
+          [delegate tappedInToolbar:self undoButton:button];
+     }
+   
     NSLog(@"finish");
 }
 
